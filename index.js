@@ -48,7 +48,8 @@ const grades={
     Abwoi:[10,20,30,25]
 }
 function averages(grades){
-  return Object.values(grades).reduce((sum,score)=> sum +score)  
+  return forEach(Object(grades).reduce((sum,score,)=> 
+    sum +score)  )
     };
 
  console.log(averages(grades))
@@ -56,41 +57,44 @@ function averages(grades){
 //QST 4 Write a function constructor called User that takes username, email, and isActive (boolean). 
 // Create an array of users. Write a program that loops through the array and deactivates users who
 //  have not logged in recently (simulate this with a random isActive: false assignment) and print out the usernames of active users.
-function User(userName,email,isActive){
+function Users(userName,email,isActive){
     this.userName=userName
     this.email=email
     this.isActive=isActive
 }
 let allUsers=[
-    {name:"Dilia",email:"diliaoyamo@gmail.com",isActive:true},
-    {name:"Shirley",email:"shirleyoyamo@gmail.com",isActive:true},
-    {name:"Bilha",email:"shirleybilha@gmail.com",isActive:true}
+    new Users("Dilia","diliaoyamo@gmail.com",true),
+    new Users("Shirley","shirleyoyamo@gmail.com",true),
+    new Users("Bilha","shirleybilha@gmail.com",false)
 ]
 
- return allUsers.filter(user=>{
-    if (user.isActive){
-        return (user)
+for (let user of allUsers){
+    if(user.isActive){
+        console.log(user)
     }
-   else{
-    return ("Your account has been deactivated")
-   }
-})
+}
 
 
 //QST 5  You have an array of destination objects, each with name, distance (in km), 
 // and budgetRequired (in dollars). Write a function that accepts a maximum distance and a budget
 //  and returns all destinations the user can afford and reach within that distance. If none are found,
 //  return "No destinations available under your budget and distance"
-
-const destinations=[
-    {name:"Nairobi", distance:"10km", budgetRequired:"15$"},
-    {name:"Mombasa",distance:"15km", budgetRequired:"20$"}
+let allDestinations=[
+    {name:"Mombasa", distance:15, budgetRequired:10},
+    {name:"Nairobi", distance:20, budgetRequired:15},
+    {name:"Voi", distance:35, budgetRequired:20}
 ]
 
-function affordableDestinations(){
 
+function affordableDestinations(maximumDistance,maximumBudget){
+let affordable= allDestinations.filter(destination=>
+    destination.distance <= maximumDistance && destination.budgetRequired <= maximumBudget)
+    if (affordable.length == 0){
+        return "No destinations available under your budget and distance";
+    }
+    else{return affordable}
 }
 
-
+console.log(affordableDestinations(10,10))
 
 
