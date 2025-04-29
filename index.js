@@ -2,12 +2,29 @@
 // Create an array of 5 employees. Write a program that increases the salary by 10% for 
 // employees who have the position "developer" and print the updated employee list. (5 pts)
 
+function Employee(name,position,salary){
+    this.name=name
+    this.position=position
+    this.salary=salary
+}
+let allEmployees=[
+    new Employee("Shirley","developer",100000),
+    new Employee("Bilha","developer",80000),
+    new Employee("Abwoi","QA",900000),
+    new Employee("Joan","developer",95000),
+    new Employee("Dilia","PM", 500000)
+]
 
+ allEmployees.forEach(employee =>{
+    if(employee.position === "developer"){
+        employee.salary*=1.10
+    }
+})
+console.log(allEmployees)
 
 //QST2 Given an array of product objects (each with name, price, and inStock properties),
 //  write a function that returns a new array containing only the products that are inStock: 
 // true, and sort the available products by price in ascending order.
-
 function sortProducts(arrayOfProducts){
    return arrayOfProducts.filter(item => 
     item.inStock) 
@@ -25,47 +42,55 @@ console.log(sortProducts(arrayOfProducts))
 //QST3 Create an object called grades where the keys are student names and the values are arrays of their scores. 
 // Write a function that calculates and prints each student's average score,
 //  and if the average is above 70, print "Pass"; otherwise, print "Fail" next to their name
+const grades={
+    Shirley:[90,40,60,70],   
+    Bilha:[40,50,20,90] ,
+    Abwoi:[10,20,30,25]
+}
+function averages(grades){
+  return Object.values(grades).reduce((sum,score)=> sum +score)  
+    };
 
-
-// const grades=[{
-//     Shirley:[90,40,60,70]
-// },
-//     {
-//         Bilha:[40,50,20,90]
-//     },
-//     {Abwoi:[10,20,30,25]}
-// ]
-// function averages(grades){
-//   return Object.values(grades).reduce((sum,score)=> sum +score)  
-//     };
-
-//  console.log(averages(grades))
+ console.log(averages(grades))
 
 //QST 4 Write a function constructor called User that takes username, email, and isActive (boolean). 
 // Create an array of users. Write a program that loops through the array and deactivates users who
 //  have not logged in recently (simulate this with a random isActive: false assignment) and print out the usernames of active users.
-
-function user(userStatus){
-    return userStatus.map(element => {
-        if(element.isActive)
-{
-    return element.name
-}  
-else{
-    return("Account deactivated")
-}  });
+function User(userName,email,isActive){
+    this.userName=userName
+    this.email=email
+    this.isActive=isActive
 }
-
-let userStatus=[
-    {name:"Dilia", email:"diliaoyamo@gmail.com", isActive:true},
-    {name:"Shirley", email:"shirleyoyamo@gmail.com", isActive:false},
-    {name:"Bilha", email:"shirleybilha@gmail.com",isActive:true}
+let allUsers=[
+    {name:"Dilia",email:"diliaoyamo@gmail.com",isActive:true},
+    {name:"Shirley",email:"shirleyoyamo@gmail.com",isActive:true},
+    {name:"Bilha",email:"shirleybilha@gmail.com",isActive:true}
 ]
 
-console.log(user(userStatus))
+ return allUsers.filter(user=>{
+    if (user.isActive){
+        return (user)
+    }
+   else{
+    return ("Your account has been deactivated")
+   }
+})
+
 
 //QST 5  You have an array of destination objects, each with name, distance (in km), 
 // and budgetRequired (in dollars). Write a function that accepts a maximum distance and a budget
 //  and returns all destinations the user can afford and reach within that distance. If none are found,
 //  return "No destinations available under your budget and distance"
+
+const destinations=[
+    {name:"Nairobi", distance:"10km", budgetRequired:"15$"},
+    {name:"Mombasa",distance:"15km", budgetRequired:"20$"}
+]
+
+function affordableDestinations(){
+
+}
+
+
+
 
